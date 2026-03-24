@@ -65,6 +65,8 @@ COPY --from=assets /var/www/public/build /var/www/public/build
 # Config files
 COPY docker/production/combined/nginx.conf /etc/nginx/nginx.conf
 COPY docker/production/combined/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/production/combined/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY docker/production/combined/php-fpm-tuning.conf /usr/local/etc/php-fpm.d/zzz-tuning.conf
 
 # Entrypoint (runs migrations + cache)
 COPY docker/production/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh
